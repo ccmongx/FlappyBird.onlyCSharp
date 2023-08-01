@@ -70,5 +70,4 @@ public class Player : MonoBehaviour
             FindObjectOfType<GameManager>().IncreaseScore();
         }
     }
-
 }

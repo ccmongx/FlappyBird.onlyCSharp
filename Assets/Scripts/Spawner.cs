@@ -22,5 +22,4 @@ public class Spawner : MonoBehaviour
         GameObject pipes = Instantiate(prefab, transform.position, Quaternion.identity);
         pipes.transform.position += Vector3.up * Random.Range(minHeight, maxHeight);
     }
-
 }

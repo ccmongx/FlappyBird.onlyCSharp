@@ -58,5 +58,4 @@ public class GameManager : MonoBehaviour
         score++;
         scoreText.text = score.ToString();
     }
-
 }
