@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
-    public void BasicMode(){
+    public void OpenBasicMode(){
         SceneManager.LoadScene(1);
     }
 }
