@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
     private Player player;
     private Spawner spawner;
 
-    public Text scoreText;
-    public GameObject playButton;
-    public GameObject gameOver;
+    [SerializeField] private Text scoreText;
+    [SerializeField] private GameObject playButton;
+    [SerializeField] private GameObject gameOver;
     public int score { get; private set; }
 
     private void Awake()

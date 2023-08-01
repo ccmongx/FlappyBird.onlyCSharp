@@ -3,12 +3,15 @@
 public class Player : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
-    public Sprite[] sprites;
+    [SerializeField] private Sprite[] sprites;
     private int spriteIndex;
 
-    public float strength = 5f;
-    public float gravity = -9.81f;
-    public float tilt = 5f;
+    [SerializeField] private float strength = 5f;
+    [SerializeField] private float gravity = -9.81f;
+    [SerializeField] private float tilt = 5f;
+
+    [SerializeField] private string Obstacle = "Obstacle";
+    [SerializeField] private string Scoring = "Scoring";
 
     private Vector3 direction;
 
@@ -61,9 +64,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Obstacle")) {
+        if (other.gameObject.CompareTag(Obstacle)) {
             FindObjectOfType<GameManager>().GameOver();
-        } else if (other.gameObject.CompareTag("Scoring")) {
+        } else if (other.gameObject.CompareTag(Scoring)) {
             FindObjectOfType<GameManager>().IncreaseScore();
         }
     }
