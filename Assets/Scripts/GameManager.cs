@@ -59,3 +59,10 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 }
+
+
+
+
+
+
+
