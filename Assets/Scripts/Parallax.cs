@@ -6,18 +6,18 @@ public class Parallax : MonoBehaviour
     [SerializeField] private float animationSpeed = 1f;
     [SerializeField] private float _dayLenght;
 
-    private TimeSpan _currentTime;
-    private float _minuteLenght => _dayLenght / WorldTimeConstants.MinutesInDay;
+    // private TimeSpan _currentTime;
+    // private float _minuteLenght => _dayLenght / WorldTimeConstants.MinutesInDay;
 
-    private void Start(){
-        StartCoroutine(AddMinutes);
-    }
+    // private void Start(){
+    //     StartCoroutine(AddMinutes);
+    // }
 
-    private IEnumerable AddMinutes(){
-        _currentTime += TimeSpan.FromMinutes(1);
-        yield return new WaitForSeconds(_minuteLenght);
-        StartCoroutine(AddMinutes);
-    }
+    // private IEnumerable AddMinutes(){
+    //     _currentTime += TimeSpan.FromMinutes(1);
+    //     yield return new WaitForSeconds(_minuteLenght);
+    //     StartCoroutine(AddMinutes);
+    // }
     private void Awake(){
         meshRenderer = GetComponent<MeshRenderer>();
     }
