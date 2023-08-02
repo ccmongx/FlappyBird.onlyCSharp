@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -9,10 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text scoreText;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject exitButton;
     public int score { get; private set; }
+    private int highScore;
 
-    private void Awake()
-    {
+    private void Awake(){
         Application.targetFrameRate = 60;
 
         player = FindObjectOfType<Player>();
@@ -21,13 +23,13 @@ public class GameManager : MonoBehaviour
         Pause();
     }
 
-    public void Play()
-    {
+    public void Play(){
         score = 0;
         scoreText.text = score.ToString();
 
         playButton.SetActive(false);
         gameOver.SetActive(false);
+        exitButton.SetActive(false);
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -39,23 +41,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void GameOver()
-    {
+    public void GameOver(){
         playButton.SetActive(true);
         gameOver.SetActive(true);
+        exitButton.SetActive(true);
 
         Pause();
     }
 
-    public void Pause()
-    {
+    public void Pause(){
         Time.timeScale = 0f;
         player.enabled = false;
     }
 
-    public void IncreaseScore()
-    {
+    public void IncreaseScore(){
         score++;
         scoreText.text = score.ToString();
+    }
+
+    public void Exit(){
+        SceneManager.LoadScene(0);
     }
 }
