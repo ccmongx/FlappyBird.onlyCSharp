@@ -4,7 +4,7 @@ public class Parallax : MonoBehaviour
 {
     private MeshRenderer meshRenderer;
     [SerializeField] private float animationSpeed = 1f;
-    [SerializeField] private float _dayLenght;
+    // [SerializeField] private float _dayLenght;
 
     // private TimeSpan _currentTime;
     // private float _minuteLenght => _dayLenght / WorldTimeConstants.MinutesInDay;
