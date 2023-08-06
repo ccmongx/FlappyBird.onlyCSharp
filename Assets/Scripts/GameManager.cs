@@ -8,14 +8,13 @@ public class GameManager : MonoBehaviour
     private Spawner spawner;
 
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text highScoreText;
     [SerializeField] private GameObject playButton;
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject panel;
 
     public int score { get; private set; }
-    //private int highScore;
-
     private void Awake(){
         Application.targetFrameRate = 60;
 
@@ -42,6 +41,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < pipes.Length; i++) {
             Destroy(pipes[i].gameObject);
         }
+
+        UpdateHighScore();
     }
 
     public void GameOver(){
@@ -50,6 +51,7 @@ public class GameManager : MonoBehaviour
         exitButton.SetActive(true);
         panel.SetActive(true);
 
+        UpdateHighScore();
         Pause();
     }
 
@@ -65,5 +67,17 @@ public class GameManager : MonoBehaviour
 
     public void Exit(){
         SceneManager.LoadScene(0);
+    }
+
+    private void UpdateHighScore(){
+        int highScore = PlayerPrefs.GetInt("highScore", 0);
+
+        if (score > highScore)
+        {
+            highScore = score;
+            PlayerPrefs.SetInt("highScore", highScore);
+        }
+
+        highScoreText.text = highScore.ToString();
     }
 }
