@@ -13,9 +13,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject gameOver;
     [SerializeField] private GameObject exitButton;
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject getReady;
 
     public int score { get; private set; }
     private void Awake(){
+        getReady.SetActive(true);
+        gameOver.SetActive(false);
         Application.targetFrameRate = 60;
 
         player = FindObjectOfType<Player>();
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(false);
         exitButton.SetActive(false);
         panel.SetActive(false);
+        getReady.SetActive(false);
 
         Time.timeScale = 1f;
         player.enabled = true;
@@ -50,6 +54,7 @@ public class GameManager : MonoBehaviour
         gameOver.SetActive(true);
         exitButton.SetActive(true);
         panel.SetActive(true);
+        getReady.SetActive(false);
 
         UpdateHighScore();
         Pause();
